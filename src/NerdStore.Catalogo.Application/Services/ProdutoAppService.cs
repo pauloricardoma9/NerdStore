@@ -34,7 +34,7 @@ namespace NerdStore.Catalogo.Application.Services
         public async Task AtualizarProduto(ProdutoViewModel produtoViewModel)
         {
             var produto = _mapper.Map<Produto>(produtoViewModel);
-            _produtoRepository.Adicionar(produto);
+            _produtoRepository.Atualizar(produto);
 
             await _produtoRepository.UnitOfWork.Commit();
         }
