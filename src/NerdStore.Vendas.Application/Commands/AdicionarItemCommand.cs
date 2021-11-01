@@ -1,12 +1,10 @@
 ﻿using FluentValidation;
 using NerdStore.Core.Messages;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NerdStore.Vendas.Application.Commands
 {
-    public class AdicionarItemPedidoCommand : Command
+    public class AdicionarItemCommand : Command
     {
         public Guid ClienteId { get; private set; }
         public Guid ProdutoId { get; private set; }
@@ -14,7 +12,7 @@ namespace NerdStore.Vendas.Application.Commands
         public int Quantidade { get; private set; }
         public decimal ValorUnitario { get; private set; }
 
-        public AdicionarItemPedidoCommand(Guid clienteId, Guid produtoId, string nome, int quantidade, decimal valorUnitario)
+        public AdicionarItemCommand(Guid clienteId, Guid produtoId, string nome, int quantidade, decimal valorUnitario)
         {
             ClienteId = clienteId;
             ProdutoId = produtoId;
@@ -30,7 +28,7 @@ namespace NerdStore.Vendas.Application.Commands
         }
     }
 
-    public class AdicionarItemPedidoValidation : AbstractValidator<AdicionarItemPedidoCommand>
+    public class AdicionarItemPedidoValidation : AbstractValidator<AdicionarItemCommand>
     {
         public AdicionarItemPedidoValidation()
         {
