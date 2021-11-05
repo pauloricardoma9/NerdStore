@@ -4,7 +4,7 @@ using System;
 
 namespace NerdStore.Vendas.Application.Commands
 {
-    public class AdicionarItemCommand : Command
+    public class AdicionarItemPedidoCommand : Command
     {
         public Guid ClienteId { get; private set; }
         public Guid ProdutoId { get; private set; }
@@ -12,7 +12,7 @@ namespace NerdStore.Vendas.Application.Commands
         public int Quantidade { get; private set; }
         public decimal ValorUnitario { get; private set; }
 
-        public AdicionarItemCommand(Guid clienteId, Guid produtoId, string nome, int quantidade, decimal valorUnitario)
+        public AdicionarItemPedidoCommand(Guid clienteId, Guid produtoId, string nome, int quantidade, decimal valorUnitario)
         {
             ClienteId = clienteId;
             ProdutoId = produtoId;
@@ -28,7 +28,7 @@ namespace NerdStore.Vendas.Application.Commands
         }
     }
 
-    public class AdicionarItemPedidoValidation : AbstractValidator<AdicionarItemCommand>
+    public class AdicionarItemPedidoValidation : AbstractValidator<AdicionarItemPedidoCommand>
     {
         public AdicionarItemPedidoValidation()
         {
@@ -49,7 +49,7 @@ namespace NerdStore.Vendas.Application.Commands
                 .WithMessage("A quantidade mínima de um item é 1");
 
             RuleFor(command => command.Quantidade)
-                .LessThan(15)
+                .LessThan(16)
                 .WithMessage("A quantidade máxima de um item é 15");
 
             RuleFor(command => command.ValorUnitario)
